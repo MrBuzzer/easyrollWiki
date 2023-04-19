@@ -1,48 +1,28 @@
 # MediaWiki with MariaDB
-#
-# Access via "http://localhost:8080"
+# Access via "http://localhost:8080/"
 #   (or "http://$(docker-machine ip):8080" if using docker-machine)
 version: '3'
-
 services:
-# Mediawiki
   mediawiki:
     image: mediawiki
     restart: always
     ports:
-      - "8080:80"
-     links:
+      - 8080:80
+    links:
       - database
     volumes:
       - images:/var/www/html/images
-    ###environment:
-      ##MW_INSTALL_PATH: /var/www/html/
-      #MW_SITE_NAME: "easyrollwiki"
-      #MW_SITE_LANG: "fr"
-      #MW_ADMIN_USER: admin
-      #MW_ADMIN_PASS: password
-      #MW_DB_HOST: db
-      #MW_DB_NAME: my_wiki
-      #MW_DB_USER: wiki_user
-      #MW_DB_PASSWORD: wiki_password
-    #networks:
-      #- mediawiki
-
-  # MySQL database
-  db:
-    image: mysql:5.7
+      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+  database:
+    image: mariadb
     restart: always
     environment:
-      MYSQL_DATABASE: mediawiki
-      MYSQL_USER: Administrateur
+ MYSQL_DATABASE: mediawiki
+      MYSQL_USER: Admin
       MYSQL_PASSWORD: pSMW4541BAA
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
       - db:/var/lib/mysql
-
-  
 volumes:
   images:
   db:
-
-  
