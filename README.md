@@ -1,2 +1,2 @@
 # easyrollWiki
-push di dockfile et compose
+push du dockfile et compose
