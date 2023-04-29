@@ -10,7 +10,7 @@ services:
     env_file:
       - ./mysql.env
     restart: always  
-  web:
+    
   #Mediawiki Container
   mediawiki:
     image: mediawiki
