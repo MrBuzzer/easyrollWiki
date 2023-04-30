@@ -54,8 +54,8 @@ $wgEnotifWatchlist = false; # UPO
 $wgEmailAuthentication = true;
 
 ## Database settings
-$wgDBtype = "mysql";
-$wgDBserver = "mysql";
+$wgDBtype = "mariadb";
+$wgDBserver = "mariadb";
 $wgDBname = "wikidb";
 $wgDBuser = "root";
 $wgDBpassword = "pSMW4541BAA";
