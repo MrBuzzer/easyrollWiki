@@ -3,10 +3,10 @@ services:
 #Mysql Container
   mysql:
     image: mariadb:10.5.8
-    container_name: mysql
-    hostname: mysql
+    container_name: mariadb
+    hostname: mariadb
     volumes:
-      - /var/lib/mysql:/var/lib/mysql
+      - /var/lib/mariadb:/var/lib/mariadb
     env_file:
       - ./mysql.env
     restart: always  
@@ -21,5 +21,5 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - /var/www/html/wiki/:/var/www/html/wiki
+      - /var/www/html/mediawiki/:/var/www/html/mediawiki
     restart: always
