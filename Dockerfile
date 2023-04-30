@@ -20,11 +20,11 @@ RUN curl -L https://releases.wikimedia.org/mediawiki/1.36/mediawiki-1.36.0.tar.g
     mv mediawiki-* /var/www/html/mediawiki
     
 #download citizen skin
-MKDIR /skins/citizen 
+RUN mkdir /skins/citizen 
 COPY mediawiki-skins-Citizen-dd9b6313b6a921d3849a5973afa849b729c30d3f.tar.gz /skins \
 tar -xzf mediawiki-skins-Citizen-dd9b6313b6a921d3849a5973afa849b729c30d3f.tar.gz && \
     rm mediawiki-skins-Citizen-dd9b6313b6a921d3849a5973afa849b729c30d3f.zip.tar.gz && \
-    mv mediawiki-skins-Citizen-dd9b6313b6a921d3849a5973afa849b729c30d3f-* /skins
+    mv mediawiki-skins-Citizen-dd9b6313b6a921d3849a5973afa849b729c30d3f-* /var/www/html/skins
     
 # Set ownership and permissions
 RUN chown -R www-data:www-data /var/www/html/mediawiki && \
@@ -41,7 +41,7 @@ ENV MW_ADMIN_USER "admin"
 ENV MW_ADMIN_PASS "pSMW4541BAA"
 
 # Copy LocalSettings.php into container
-COPY LocalSettings.php /var/www/html/mediawiki/
+COPY LocalSettings.php /var/www/html/mediawiki
 
 EXPOSE 80
 
